@@ -34,7 +34,7 @@ export default function About() {
           <h2 className="text-4xl md:text-7xl font-black mb-10 tracking-tighter leading-[1.1]">
             About <br />
             <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-              SheInspire 2.0
+              Sheinspires 2.0
             </span>
           </h2>
 
