@@ -3,7 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LogoLoop from "./LogoLoop";
-import { sponsors } from "./Sponsors";
+import { sponsors } from "./sponsors";
+
 
 const SponsorsSection = () => {
   return (
