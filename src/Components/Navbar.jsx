@@ -1,6 +1,7 @@
-// Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,11 +15,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Using HashLink for IDs and Link for separate routes
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Schedule", href: "#schedule" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Schedule", href: "/#schedule" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Sponsors", href: "/#sponsors" }, // Added sponsors for completeness
   ];
 
   return (
@@ -29,32 +31,32 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-5xl mx-auto px-6">
-          {/* Main Pill Container */}
           <div 
             className={`relative flex items-center justify-between h-14 px-8 transition-all duration-500 border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-full backdrop-blur-2xl ${
-              scrolled ? "bg-black/60" : "bg-white/5"
+              scrolled ? "bg-black/80" : "bg-white/5"
             }`}
           >
             
             {/* Logo Section */}
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              <a href="#" className="text-sm font-black tracking-tighter text-white uppercase">
+              <Link to="/" className="text-sm font-black tracking-tighter text-white uppercase">
                 SheInspire<span className="text-purple-500">2.0</span>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Center Navigation */}
             <ul className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <HashLink
+                    smooth
+                    to={link.href}
                     className="text-[10px] font-bold text-gray-400 hover:text-white transition-all duration-300 relative uppercase tracking-[0.2em] group"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-1/2 w-0 h-[1px] bg-purple-500 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-                  </a>
+                  </HashLink>
                 </li>
               ))}
             </ul>
@@ -91,7 +93,6 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[90] md:hidden bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center p-8"
           >
-            {/* Close trigger background */}
             <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
             
             <ul className="relative z-10 flex flex-col items-center gap-10 text-center">
@@ -102,13 +103,14 @@ export default function Navbar() {
                   transition={{ delay: i * 0.1 }}
                   key={link.name}
                 >
-                  <a
-                    href={link.href}
+                  <HashLink
+                    smooth
+                    to={link.href}
                     onClick={() => setIsOpen(false)}
                     className="text-4xl font-black text-white hover:text-purple-500 transition-colors uppercase tracking-tighter"
                   >
                     {link.name}
-                  </a>
+                  </HashLink>
                 </motion.li>
               ))}
               
