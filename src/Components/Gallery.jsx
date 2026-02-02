@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiGrid, FiChevronLeft, FiChevronRight, FiX, FiUsers, FiAward } from "react-icons/fi";
+import { FiGrid, FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
+import { useInView } from "react-intersection-observer";
 
 import pic1 from "../assets/pic1.JPG";
 import pic2 from "../assets/pic2.JPG";
@@ -82,7 +83,7 @@ export default function GalleryPage() {
 
   return (
     <div className="bg-black text-white min-h-screen selection:bg-purple-500/30">
-      
+
       {/* Winner Lightbox */}
       <AnimatePresence>
         {activeWinner !== null && (
@@ -121,6 +122,7 @@ export default function GalleryPage() {
                 src={winners[activeWinner].img}
                 className="max-w-full max-h-[80vh] rounded-2xl border border-white/10 object-contain shadow-2xl"
                 alt={`Winner ${activeWinner + 1}`}
+                loading="lazy"
               />
             </motion.div>
           </motion.div>
@@ -141,7 +143,7 @@ export default function GalleryPage() {
             <button onClick={handlePrev} className="absolute left-4 md:left-10 z-[160] p-4 rounded-full bg-white/10 hover:bg-purple-600 transition-all"><FiChevronLeft size={24} /></button>
             <button onClick={handleNext} className="absolute right-4 md:right-10 z-[160] p-4 rounded-full bg-white/10 hover:bg-purple-600 transition-all"><FiChevronRight size={24} /></button>
             <motion.div key={activeIndex} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative max-w-full max-h-[80vh]">
-              <img src={galleryImages[activeIndex]} className="max-w-full max-h-[80vh] rounded-2xl border border-white/10 object-contain shadow-2xl" alt="Gallery" />
+              <img src={galleryImages[activeIndex]} className="max-w-full max-h-[80vh] rounded-2xl border border-white/10 object-contain shadow-2xl" alt="Gallery" loading="lazy" />
             </motion.div>
           </motion.div>
         )}
@@ -160,51 +162,40 @@ export default function GalleryPage() {
         </section>
 
         {/* Winners Slideshow */}
-     {/* Winners Slideshow */}
-<section id="winners" className="px-6 max-w-7xl mx-auto">
-  <div className="text-center mb-16">
-    <h2 className="text-3xl md:text-6xl font-black tracking-tighter">
-      Last Year’s <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Winners</span>
-    </h2>
-  </div>
+        <section id="winners" className="px-6 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-6xl font-black tracking-tighter">
+              Last Year’s <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Winners</span>
+            </h2>
+          </div>
 
-  <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-3xl">
-    {/* Winner Track */}
-    <motion.div
-      className="flex transition-transform duration-500"
-      animate={{ x: `-${activeWinner * 100}%` }}
-    >
-      {winners.map((winner, i) => (
-        <div
-          key={i}
-          className="flex-shrink-0 w-full cursor-pointer rounded-2xl overflow-hidden border border-white/10"
-          onClick={() => setActiveWinner(i)}
-        >
-          <img
-            src={winner.img}
-            className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl transition-transform duration-500 hover:scale-105"
-            alt={`Winner ${i + 1}`}
-          />
-        </div>
-      ))}
-    </motion.div>
+          <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-3xl">
+            <motion.div className="flex transition-transform duration-500" animate={{ x: `-${activeWinner * 100}%` }}>
+              {winners.map((winner, i) => {
+                const { ref, inView } = useInView({ triggerOnce: true });
+                return (
+                  <div key={i} ref={ref} className="flex-shrink-0 w-full cursor-pointer rounded-2xl overflow-hidden border border-white/10" onClick={() => setActiveWinner(i)}>
+                    {inView && (
+                      <img
+                        src={winner.img}
+                        className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl transition-transform duration-500 hover:scale-105"
+                        alt={`Winner ${i + 1}`}
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </motion.div>
 
-    {/* Prev/Next Buttons */}
-    <button
-      onClick={handleWinnerPrev}
-      className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-purple-600 transition-all"
-    >
-      <FiChevronLeft size={24} />
-    </button>
-    <button
-      onClick={handleWinnerNext}
-      className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-purple-600 transition-all"
-    >
-      <FiChevronRight size={24} />
-    </button>
-  </div>
-</section>
-
+            <button onClick={handleWinnerPrev} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-purple-600 transition-all">
+              <FiChevronLeft size={24} />
+            </button>
+            <button onClick={handleWinnerNext} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-purple-600 transition-all">
+              <FiChevronRight size={24} />
+            </button>
+          </div>
+        </section>
 
         {/* Video Highlights */}
         <section className="px-6 max-w-7xl mx-auto">
@@ -213,17 +204,8 @@ export default function GalleryPage() {
               Event <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Highlights</span>
             </h2>
           </div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video max-w-5xl mx-auto"
-          >
-            <iframe 
-              className="w-full h-full transition-all duration-700" 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" 
-              title="Sheinspires Highlights" 
-              allowFullScreen
-            ></iframe>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video max-w-5xl mx-auto">
+            <iframe className="w-full h-full transition-all duration-700" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" title="Sheinspires Highlights" allowFullScreen></iframe>
           </motion.div>
         </section>
 
@@ -245,20 +227,30 @@ export default function GalleryPage() {
             {viewMode === "carousel" ? (
               <motion.div key="carousel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-10">
                 <div className="flex gap-4 animate-scroll whitespace-nowrap">
-                  {[...galleryImages, ...galleryImages].map((src, i) => (
-                    <div key={i} onClick={() => setActiveIndex(i % galleryImages.length)} className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0">
-                      <img src={src} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" alt="Gallery item" />
-                    </div>
-                  ))}
+                  {[...galleryImages, ...galleryImages].map((src, i) => {
+                    const { ref, inView } = useInView({ triggerOnce: true });
+                    return (
+                      <div key={i} ref={ref} onClick={() => setActiveIndex(i % galleryImages.length)} className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0">
+                        {inView && (
+                          <img src={src} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" alt="Gallery item" loading="lazy" />
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
             ) : (
               <motion.div key="grid" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="px-6 max-w-7xl mx-auto columns-2 lg:columns-4 gap-4 space-y-4">
-                {galleryImages.map((src, i) => (
-                  <motion.div key={i} onClick={() => setActiveIndex(i)} className="relative overflow-hidden rounded-3xl border border-white/10 cursor-zoom-in">
-                    <img src={src} className="w-full object-cover transition-transform duration-700 hover:scale-105 rounded-2xl" alt="Gallery item" />
-                  </motion.div>
-                ))}
+                {galleryImages.map((src, i) => {
+                  const { ref, inView } = useInView({ triggerOnce: true });
+                  return (
+                    <motion.div key={i} ref={ref} onClick={() => setActiveIndex(i)} className="relative overflow-hidden rounded-3xl border border-white/10 cursor-zoom-in">
+                      {inView && (
+                        <img src={src} className="w-full object-cover transition-transform duration-700 hover:scale-105 rounded-2xl" alt="Gallery item" loading="lazy" />
+                      )}
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             )}
           </AnimatePresence>
