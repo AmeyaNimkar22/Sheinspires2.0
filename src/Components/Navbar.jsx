@@ -63,9 +63,14 @@ export default function Navbar() {
 
             {/* Desktop Right Action */}
             <div className="hidden md:block">
-              <button className="px-6 py-2 bg-white text-black text-[10px] font-black rounded-full transition-all hover:bg-purple-500 hover:text-white active:scale-95 uppercase tracking-widest shadow-lg">
+              <a
+                href="https://forms.gle/bAWG3XvQYxjFXBsS9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-white text-black text-[10px] font-black rounded-full transition-all hover:bg-purple-500 hover:text-white active:scale-95 uppercase tracking-widest shadow-lg inline-block"
+              >
                 Join Now
-              </button>
+              </a>
             </div>
 
             {/* Mobile Hamburger Button */}

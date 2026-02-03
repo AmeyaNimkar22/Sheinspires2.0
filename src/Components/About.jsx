@@ -6,7 +6,7 @@ export default function About() {
     { title: "2 Days", desc: "Learning & Innovation" },
     { title: "Women Only", desc: "Inclusive Platform" },
     { title: "Industry Led", desc: "Hands-on Training" },
-    { title: "₹50K+", desc: "Prizes & Opportunities" },
+    { title: "₹20K+", desc: "Prizes & Opportunities" },
   ];
 
   return (
@@ -52,13 +52,7 @@ export default function About() {
             </p>
           </div>
 
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-12 px-10 py-4 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-purple-500/5 transition-all"
-          >
-            Explore Vision
-          </motion.button>
+          
         </motion.div>
 
         {/* Right Highlights */}
