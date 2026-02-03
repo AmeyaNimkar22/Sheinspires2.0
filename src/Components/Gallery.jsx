@@ -205,56 +205,89 @@ export default function GalleryPage() {
             </h2>
           </div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video max-w-5xl mx-auto">
-            <iframe className="w-full h-full transition-all duration-700" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" title="Sheinspires Highlights" allowFullScreen></iframe>
+            <iframe
+  className="w-full h-full transition-all duration-700"
+  src="https://www.youtube.com/embed/Tcq33ICmyhk"
+  title="Sheinspires Highlights"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
           </motion.div>
         </section>
 
         {/* Gallery Section */}
-        <section className="relative overflow-hidden">
-          <div className="px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-6xl font-black tracking-tighter">
-                Event <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Gallery</span>
-              </h2>
-            </div>
-            <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10">
-              <button onClick={() => setViewMode("carousel")} className={`px-6 py-2 rounded-xl text-[10px] font-black transition-all ${viewMode === 'carousel' ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}>CINEMATIC</button>
-              <button onClick={() => setViewMode("grid")} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[10px] font-black transition-all ${viewMode === 'grid' ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}><FiGrid /> GRID</button>
-            </div>
-          </div>
+        {/* Gallery Section */}
+<section className="relative overflow-hidden">
+  <div className="px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
+    <div className="text-center md:text-left">
+      <h2 className="text-3xl md:text-6xl font-black tracking-tighter">
+        Event <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Gallery</span>
+      </h2>
+    </div>
+    <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10">
+      <button 
+        onClick={() => setViewMode("carousel")} 
+        className={`px-6 py-2 rounded-xl text-[10px] font-black transition-all ${viewMode === 'carousel' ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+      >
+        CINEMATIC
+      </button>
+      <button 
+        onClick={() => setViewMode("grid")} 
+        className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[10px] font-black transition-all ${viewMode === 'grid' ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+      >
+        <FiGrid /> GRID
+      </button>
+    </div>
+  </div>
 
-          <AnimatePresence mode="wait">
-            {viewMode === "carousel" ? (
-              <motion.div key="carousel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-10">
-                <div className="flex gap-4 animate-scroll whitespace-nowrap">
-                  {[...galleryImages, ...galleryImages].map((src, i) => {
-                    const { ref, inView } = useInView({ triggerOnce: true });
-                    return (
-                      <div key={i} ref={ref} onClick={() => setActiveIndex(i % galleryImages.length)} className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0">
-                        {inView && (
-                          <img src={src} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" alt="Gallery item" loading="lazy" />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div key="grid" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="px-6 max-w-7xl mx-auto columns-2 lg:columns-4 gap-4 space-y-4">
-                {galleryImages.map((src, i) => {
-                  const { ref, inView } = useInView({ triggerOnce: true });
-                  return (
-                    <motion.div key={i} ref={ref} onClick={() => setActiveIndex(i)} className="relative overflow-hidden rounded-3xl border border-white/10 cursor-zoom-in">
-                      {inView && (
-                        <img src={src} className="w-full object-cover transition-transform duration-700 hover:scale-105 rounded-2xl" alt="Gallery item" loading="lazy" />
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </section>
+  <AnimatePresence mode="wait">
+    {viewMode === "carousel" ? (
+      <motion.div key="carousel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-10">
+        <div className="flex gap-4 animate-scroll whitespace-nowrap">
+          {[...galleryImages, ...galleryImages].map((src, i) => (
+            <div 
+              key={i} 
+              onClick={() => setActiveIndex(i % galleryImages.length)} 
+              className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0"
+            >
+              <img 
+                src={src} 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" 
+                alt="Gallery item" 
+                loading="lazy" 
+              />
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    ) : (
+      <motion.div 
+        key="grid" 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        exit={{ opacity: 0 }} 
+        className="px-6 max-w-7xl mx-auto columns-2 lg:columns-4 gap-4 space-y-4"
+      >
+        {galleryImages.map((src, i) => (
+          <motion.div 
+            key={i} 
+            onClick={() => setActiveIndex(i)} 
+            className="relative overflow-hidden rounded-3xl border border-white/10 cursor-zoom-in"
+          >
+            <img 
+              src={src} 
+              className="w-full object-cover transition-transform duration-700 hover:scale-105 rounded-2xl" 
+              alt="Gallery item" 
+              loading="lazy" 
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    )}
+  </AnimatePresence>
+</section>
       </main>
 
       <style>{`
