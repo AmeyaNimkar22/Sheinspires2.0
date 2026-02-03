@@ -15,6 +15,58 @@ import pic9 from "../assets/pic9.JPG";
 import pic10 from "../assets/pic10.JPG";
 import pic11 from "../assets/pic11.JPG";
 import pic12 from "../assets/pic12.JPG";
+import pic13 from "../assets/pic13.JPG";
+import pic14 from "../assets/pic14.JPG";
+import pic15 from "../assets/pic15.JPG";
+import pic16 from "../assets/pic16.JPG";
+import pic17 from "../assets/pic17.JPG";
+import pic18 from "../assets/pic18.JPG";
+import pic19 from "../assets/pic19.JPG";
+import pic20 from "../assets/pic20.JPG";
+import pic21 from "../assets/pic21.JPG";
+import pic22 from "../assets/pic22.JPG";
+import pic23 from "../assets/pic23.JPG";
+import pic24 from "../assets/pic24.JPG";
+import pic25 from "../assets/pic25.JPG";
+import pic26 from "../assets/pic26.JPG";
+import pic27 from "../assets/pic27.JPG";
+import pic28 from "../assets/pic28.JPG";
+import pic29 from "../assets/pic29.JPG";
+import pic30 from "../assets/pic30.JPG";
+import pic31 from "../assets/pic31.JPG";
+import pic32 from "../assets/pic32.JPG";
+import pic33 from "../assets/pic33.JPG";
+import pic34 from "../assets/pic34.JPG";
+import pic35 from "../assets/pic35.JPG";
+import pic36 from "../assets/pic36.JPG";
+import pic37 from "../assets/pic37.JPG";
+import pic38 from "../assets/pic38.JPG";
+import pic39 from "../assets/pic39.JPG";
+import pic40 from "../assets/pic40.JPG";
+import pic41 from "../assets/pic41.JPG";
+import pic42 from "../assets/pic42.JPG";
+import pic43 from "../assets/pic43.JPG";
+import pic44 from "../assets/pic44.JPG";
+import pic45 from "../assets/pic45.JPG";
+import pic46 from "../assets/pic46.JPG";
+import pic47 from "../assets/pic47.JPG";
+import pic48 from "../assets/pic48.JPG";
+import pic49 from "../assets/pic49.JPG";
+import pic50 from "../assets/pic50.JPG";
+import pic51 from "../assets/pic51.JPG";
+import pic52 from "../assets/pic52.JPG";
+import pic53 from "../assets/pic53.JPG";
+import pic54 from "../assets/pic54.JPG";
+import pic55 from "../assets/pic55.JPG";
+import pic56 from "../assets/pic56.JPG";  
+import pic57 from "../assets/pic57.JPG";
+import pic58 from "../assets/pic58.JPG";
+import pic59 from "../assets/pic59.JPG";
+import pic60 from "../assets/pic60.JPG";
+import pic61 from "../assets/pic61.JPG";
+import pic62 from "../assets/pic62.JPG";
+import pic63 from "../assets/pic63.JPG";
+
 
 import w1 from "../assets/w1.JPG";
 import w2 from "../assets/w2.JPG";
@@ -34,7 +86,12 @@ const winners = [
 ];
 
 const galleryImages = [
-  pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12
+  pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12 ,pic23, pic14, pic15, pic16, pic17, pic18, pic19, pic20,
+  pic21, pic22, pic13, pic24, pic25, pic26, pic27, pic28, pic29, pic30,
+  pic31, pic32, pic33, pic34, pic35, pic36, pic37, pic38, pic39, pic40,
+  pic41, pic42, pic43, pic44, pic45, pic46, pic47, pic48, pic49, pic50,
+  pic51, pic52, pic53, pic54, pic55, pic56, pic57, pic58, pic59, pic60,
+  pic61, pic62, pic63,
 ];
 
 export default function GalleryPage() {
