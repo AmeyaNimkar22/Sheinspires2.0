@@ -1,7 +1,28 @@
+// First, import the images (adjust paths based on your folder structure)
+import rpglogo from "../assets/rpglogo.png";
+import zensarlogo from "../assets/zensarlogo.png";
+import awslogo from "../assets/awslogo.png";
+import mitadtlogo from "../assets/mitadtlogo.png";
+
 export const sponsors = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg", alt: "React.js" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", alt: "Tailwind CSS" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg", alt: "TypeScript" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Javascript_badge.svg", alt: "JavaScript" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg", alt: "Sass" },
+  { 
+    src: rpglogo, 
+    alt: "RPG Group",
+    name: "RPG Group"
+  },
+  { 
+    src: zensarlogo, 
+    alt: "Zensar Technologies",
+    name: "Zensar Technologies"
+  },
+  { 
+    src: awslogo, 
+    alt: "Amazon Web Services",
+    name: "AWS"
+  },
+  { 
+    src: mitadtlogo, 
+    alt: "MIT ADT University",
+    name: "MIT ADT University"
+  },
 ];
