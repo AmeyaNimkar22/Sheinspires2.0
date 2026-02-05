@@ -6,7 +6,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
       <div className="space-y-4">
         <h2 className="text-3xl font-black tracking-tighter text-white">
-          Sheinspires <span className="pinyon-script-regular text-purple-400 text-4xl ml-1">2.0</span>
+          Sheinspires <span className="great-vibes-regular text-purple-400 text-4xl ml-1">2.0</span>
         </h2>
         <p className="text-gray-500 text-sm max-w-xs font-light leading-relaxed">
           Empowering the next generation of women in tech through innovation and community.

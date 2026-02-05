@@ -5,6 +5,11 @@
   font-weight: 400;
   font-style: normal;
 }
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 /* Ensure the canvas doesn't collapse to 0px */
 canvas {
   width: 100% !important;

@@ -48,7 +48,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
         >
           {/* Part 1: White Text */}
-          <span className="text-6xl md:text-7xl font-black text-white tracking-tighter pinyon-script-regular">
+          <span className="text-6xl md:text-7xl font-black text-white tracking-tighter great-vibes-regular">
             <TextType 
               text={["Sheinspires"]}
               typingSpeed={100} 
@@ -58,7 +58,7 @@ export default function Hero() {
           </span>
 
           {/* Part 2: Gradient Text */}
-          <span className="text-4xl md:text-7xl font-black tracking-tighter pinyon-script-regular">
+          <span className="text-4xl md:text-7xl font-black tracking-tighter great-vibes-regular">
             <TextType 
               text={["2.0"]}
               typingSpeed={120}
