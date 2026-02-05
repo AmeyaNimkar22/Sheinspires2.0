@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
+// Import the logo
+import logo from "../assets/logo.png"; // Adjust the path as necessary
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,7 @@ export default function Navbar() {
     { name: "About", href: "/#about" },
     { name: "Schedule", href: "/#schedule" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Sponsors", href: "/#sponsors" }, // Added sponsors for completeness
+    { name: "Sponsors", href: "/#sponsors" },
   ];
 
   return (
@@ -37,13 +39,14 @@ export default function Navbar() {
             }`}
           >
             
-            {/* Logo Section */}
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              <Link to="/" className="text-sm font-black tracking-tighter text-white uppercase">
-                SheInspire<span className="text-purple-500">2.0</span>
-              </Link>
-            </div>
+            {/* Logo Section - Updated with logo image */}
+            <Link to="/" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="SheInspire 2.0 Logo" 
+                className="h-8 w-auto object-contain" // Adjust height as needed
+              />
+            </Link>
 
             {/* Desktop Center Navigation */}
             <ul className="hidden md:flex items-center gap-8">
@@ -89,7 +92,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Updated with logo in mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -99,6 +102,22 @@ export default function Navbar() {
             className="fixed inset-0 z-[90] md:hidden bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center p-8"
           >
             <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+            
+            {/* Logo in Mobile Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="absolute top-8 left-6 z-10"
+            >
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                <img 
+                  src={logo} 
+                  alt="SheInspire 2.0 Logo" 
+                  className="h-10 w-auto object-contain" // Slightly larger for mobile
+                />
+              </Link>
+            </motion.div>
             
             <ul className="relative z-10 flex flex-col items-center gap-10 text-center">
               {navLinks.map((link, i) => (
@@ -124,9 +143,14 @@ export default function Navbar() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <button className="mt-6 px-12 py-4 bg-purple-600 text-white font-black rounded-full text-lg shadow-[0_0_30px_rgba(147,51,234,0.4)]">
-                  JOIN NOW
-                </button>
+                <a
+                  href="https://forms.gle/bAWG3XvQYxjFXBsS9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 px-12 py-4 bg-purple-600 text-white font-black rounded-full text-lg shadow-[0_0_30px_rgba(147,51,234,0.4)] inline-block hover:bg-purple-700 transition-colors"
+                >
+                  Join Now
+                </a>
               </motion.li>
             </ul>
           </motion.div>
