@@ -61,7 +61,7 @@ const SponsorsSection = () => {
             pauseOnHover
             scaleOnHover
             fadeOut={false} // Handled by our custom gradient overlays above for better control
-            className="grayscale opacity-50 hover:opacity-100 transition-all duration-700 hover:grayscale-0"
+            className=" transition-all duration-700 hover:grayscale-0"
           />
         </motion.div>
 
@@ -73,6 +73,7 @@ const SponsorsSection = () => {
         >
           
         </motion.div>
+        
       </div>
     </section>
   );
