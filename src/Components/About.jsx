@@ -6,7 +6,6 @@ export default function About() {
     { title: "2 Days", desc: "Learning & Innovation" },
     { title: "Women Only", desc: "Inclusive Platform" },
     { title: "Industry Led", desc: "Hands-on Training" },
-    { title: "₹20K+", desc: "Prizes & Opportunities" },
   ];
 
   return (
@@ -51,12 +50,10 @@ export default function About() {
               Beyond a competition, it’s a launchpad for confidence and global careers.
             </p>
           </div>
-
-          
         </motion.div>
 
-        {/* Right Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {/* Right Highlights - Switched to Column Format */}
+        <div className="flex flex-col gap-5">
           {highlights.map((item, index) => (
             <motion.div
               key={index}
@@ -64,15 +61,21 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ x: 10 }}
               className="group relative p-8 bg-white/[0.03] border border-white/10 rounded-[2.5rem] backdrop-blur-md transition-all hover:border-purple-500/40 hover:bg-white/[0.06]"
             >
-              <div className="relative z-10">
-                <h3 className="text-3xl font-black text-purple-400 mb-2 tracking-tighter transition-colors group-hover:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-gray-400 text-sm font-medium tracking-wide leading-snug">
-                  {item.desc}
-                </p>
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h3 className="text-3xl font-black text-purple-400 mb-2 tracking-tighter transition-colors group-hover:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm font-medium tracking-wide leading-snug">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="hidden md:block">
+                   
+                </div>
               </div>
             </motion.div>
           ))}

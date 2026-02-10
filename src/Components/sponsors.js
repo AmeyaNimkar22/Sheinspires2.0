@@ -1,7 +1,7 @@
 // First, import the images (adjust paths based on your folder structure)
 import rpglogo from "../assets/rpglogo.png";
 import zensarlogo from "../assets/zensarlogo.png";
-import awslogo from "../assets/awslogo.png";
+
 import mitadtlogo from "../assets/mitadtlogo.png";
 
 export const sponsors = [
@@ -14,11 +14,6 @@ export const sponsors = [
     src: zensarlogo, 
     alt: "Zensar Technologies",
     name: "Zensar Technologies"
-  },
-  { 
-    src: awslogo, 
-    alt: "Amazon Web Services",
-    name: "AWS"
   },
   { 
     src: mitadtlogo, 
