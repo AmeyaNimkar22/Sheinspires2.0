@@ -5,9 +5,7 @@ const Footer = () => (
   <footer className="bg-black border-t border-white/5 pt-24 pb-12 px-6">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
       <div className="space-y-4">
-        <h2 className="text-3xl font-black tracking-tighter text-white">
-          Sheinspires <span className="great-vibes-regular text-purple-400 text-4xl ml-1">2.0</span>
-        </h2>
+        <img src="/src/assets/logo.png" alt="Sheinspires Logo" className="w-50 h-20 object-contain" />
         <p className="text-gray-500 text-sm max-w-xs font-light leading-relaxed">
           Empowering the next generation of women in tech through innovation and community.
         </p>

@@ -276,6 +276,8 @@ export default function GalleryPage() {
 
         {/* Gallery Section */}
         {/* Gallery Section */}
+{/* Gallery Section */}
+{/* Gallery Section */}
 <section className="relative overflow-hidden">
   <div className="px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
     <div className="text-center md:text-left">
@@ -301,22 +303,32 @@ export default function GalleryPage() {
 
   <AnimatePresence mode="wait">
     {viewMode === "carousel" ? (
-      <motion.div key="carousel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-10">
-        <div className="flex gap-4 animate-scroll whitespace-nowrap">
-          {[...galleryImages, ...galleryImages].map((src, i) => (
-            <div 
-              key={i} 
-              onClick={() => setActiveIndex(i % galleryImages.length)} 
-              className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0"
-            >
-              <img 
-                src={src} 
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" 
-                alt="Gallery item" 
-                loading="lazy" 
-              />
-            </div>
-          ))}
+      <motion.div 
+        key="carousel" 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        exit={{ opacity: 0 }} 
+        className="py-10 overflow-hidden"
+      >
+        <div className="flex gap-4 animate-scroll whitespace-nowrap" style={{ width: 'fit-content' }}>
+          {/* Triple the images to ensure continuous flow and all images visible */}
+          {[...galleryImages, ...galleryImages, ...galleryImages].map((src, i) => {
+            const originalIndex = i % galleryImages.length;
+            return (
+              <div 
+                key={`${originalIndex}-${i}`} 
+                onClick={() => setActiveIndex(originalIndex)} 
+                className="inline-block w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 flex-shrink-0"
+              >
+                <img 
+                  src={src} 
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 rounded-2xl" 
+                  alt={`Gallery item ${originalIndex + 1}`} 
+                  loading="lazy" 
+                />
+              </div>
+            );
+          })}
         </div>
       </motion.div>
     ) : (
@@ -336,7 +348,7 @@ export default function GalleryPage() {
             <img 
               src={src} 
               className="w-full object-cover transition-transform duration-700 hover:scale-105 rounded-2xl" 
-              alt="Gallery item" 
+              alt={`Gallery item ${i + 1}`} 
               loading="lazy" 
             />
           </motion.div>
@@ -347,12 +359,24 @@ export default function GalleryPage() {
 </section>
       </main>
 
-      <style>{`
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-scroll { animation: scroll 35s linear infinite; }
-        .animate-scroll:hover { animation-play-state: paused; }
-        @media (max-width: 768px) { .animate-scroll { animation-duration: 25s; } }
-      `}</style>
+     <style>{`
+  @keyframes scroll { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-33.33%); } 
+  }
+  .animate-scroll { 
+    animation: scroll 45s linear infinite; /* Much faster - reduced from 25s to 15s */
+    will-change: transform;
+  }
+  .animate-scroll:hover { 
+    animation-play-state: paused; 
+  }
+  @media (max-width: 768px) { 
+    .animate-scroll { 
+      animation-duration: 15s; /* Even faster on mobile - reduced from 18s to 10s */
+    }
+  }
+`}</style>
     </div>
   );
 }
