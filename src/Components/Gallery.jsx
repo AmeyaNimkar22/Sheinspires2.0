@@ -369,8 +369,7 @@ export default function GalleryPage() {
   }
   @media (max-width: 768px) { 
     .animate-scroll { 
-      animation-duration: 50s; /* Even faster on mobile - reduced from 18s to 10s */
-    }
+      animation-duration: 150s; 
   }
 `}</style>
     </div>
