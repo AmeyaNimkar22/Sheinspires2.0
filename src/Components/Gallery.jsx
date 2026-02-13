@@ -274,9 +274,6 @@ export default function GalleryPage() {
           </motion.div>
         </section>
 
-        {/* Gallery Section */}
-        {/* Gallery Section */}
-{/* Gallery Section */}
 {/* Gallery Section */}
 <section className="relative overflow-hidden">
   <div className="px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
@@ -311,7 +308,7 @@ export default function GalleryPage() {
         className="py-10 overflow-hidden"
       >
         <div className="flex gap-4 animate-scroll whitespace-nowrap" style={{ width: 'fit-content' }}>
-          {/* Triple the images to ensure continuous flow and all images visible */}
+         
           {[...galleryImages, ...galleryImages, ...galleryImages].map((src, i) => {
             const originalIndex = i % galleryImages.length;
             return (
@@ -365,15 +362,14 @@ export default function GalleryPage() {
     100% { transform: translateX(-33.33%); } 
   }
   .animate-scroll { 
-    animation: scroll 45s linear infinite; /* Much faster - reduced from 25s to 15s */
-    will-change: transform;
+    animation: scroll 100s linear infinite; 
   }
   .animate-scroll:hover { 
     animation-play-state: paused; 
   }
   @media (max-width: 768px) { 
     .animate-scroll { 
-      animation-duration: 15s; /* Even faster on mobile - reduced from 18s to 10s */
+      animation-duration: 50s; /* Even faster on mobile - reduced from 18s to 10s */
     }
   }
 `}</style>
