@@ -9,7 +9,7 @@ const Footer = () => (
         <img
           src={logo}
           alt="SheInspire 2.0 Logo"
-          className="h-8 w-auto object-contain" // Adjust height as needed
+          className="h-30 w-auto object-contain" // Adjust height as needed
         />
         <p className="text-gray-500 text-sm max-w-xs font-light leading-relaxed">
           Empowering the next generation of women in tech through innovation and community.
