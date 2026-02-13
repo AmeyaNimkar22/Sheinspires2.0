@@ -1,11 +1,16 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
+import logo from "../assets/logo.png"; 
 
 const Footer = () => (
   <footer className="bg-black border-t border-white/5 pt-24 pb-12 px-6">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
       <div className="space-y-4">
-        <img src="/src/assets/logo.png" alt="Sheinspires Logo" className="w-50 h-20 object-contain" />
+        <img
+          src={logo}
+          alt="SheInspire 2.0 Logo"
+          className="h-8 w-auto object-contain" // Adjust height as needed
+        />
         <p className="text-gray-500 text-sm max-w-xs font-light leading-relaxed">
           Empowering the next generation of women in tech through innovation and community.
         </p>
@@ -24,7 +29,7 @@ const Footer = () => (
     </div>
     
     <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center md:hidden">
-       <p className="text-gray-700 text-[9px] font-black uppercase tracking-widest">© 2026 BrightCode Studio</p>
+       <p className="text-gray-700 text-[9px] font-black uppercase tracking-widest">© 2026 Sheinspires2.0 Studio</p>
     </div>
   </footer>
 );
