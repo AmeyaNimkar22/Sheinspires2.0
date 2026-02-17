@@ -39,15 +39,9 @@ export default function About() {
 
           <div className="space-y-8 max-w-xl">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light tracking-wide">
-              <strong className="text-white font-bold">SheInspire 2.0</strong> is a two-day immersive innovation and
-              leadership sanctuary designed exclusively for women students.
-            </p>
+              <strong className="text-white font-bold">SheInspire Hackathon 2.0</strong> is an all‑women innovation challenge by Zensar & RPG Foundation that empowers women in tech to build creative, impactful solutions using emerging technologies.
 
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed font-light tracking-wide">
-              It blends <span className="text-purple-400 font-medium">technology training</span>, 
-              <span className="text-purple-400 font-medium"> leadership insights</span>, and 
-              <span className="text-purple-400 font-medium"> real-world problem solving</span>. 
-              Beyond a competition, it’s a launchpad for confidence and global careers.
+           
             </p>
           </div>
         </motion.div>
