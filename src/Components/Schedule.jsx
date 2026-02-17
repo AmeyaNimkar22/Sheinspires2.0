@@ -117,13 +117,13 @@ export default function Schedule() {
               <div className="text-center">
                 <div className="text-sm text-purple-400 font-semibold tracking-wider">VENUE</div>
                 <div className="text-lg font-bold text-white">Urmilatai Vishwanath Karad Auditorium</div>
-                <div className="text-sm text-gray-400">MAR 15</div>
+                <div className="text-sm text-gray-400">MAR 16</div>
               </div>
               <div className="w-px h-12 bg-white/10 self-center" />
               <div className="text-center">
                 <div className="text-sm text-purple-400 font-semibold tracking-wider">VENUE</div>
                 <div className="text-lg font-bold text-white">Zensar Kharadi</div>
-                <div className="text-sm text-gray-400">MAR 16</div>
+                <div className="text-sm text-gray-400">MAR 17</div>
               </div>
             </motion.div>
 
