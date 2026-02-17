@@ -39,7 +39,7 @@ export default function About() {
 
           <div className="space-y-8 max-w-xl">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light tracking-wide">
-              <strong className="text-white font-bold">SheInspire Hackathon 2.0</strong> is an all‑women innovation challenge by Zensar & RPG Foundation that empowers women in tech to build creative, impactful solutions using emerging technologies.
+              <strong className="text-white font-bold">SheInspires Hackathon 2.0</strong> is an all‑women innovation challenge by Zensar & RPG Foundation that empowers women in tech to build creative, impactful solutions using emerging technologies.
 
            
             </p>
