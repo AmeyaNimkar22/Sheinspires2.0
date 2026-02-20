@@ -21,6 +21,7 @@ const Footer = () => (
         <HashLink smooth to="/#schedule" className="hover:text-purple-400 transition-all">Timeline</HashLink>
         <HashLink smooth to="/#sponsors" className="hover:text-purple-400 transition-all">Sponsors</HashLink>
         <HashLink smooth to="/gallery#" className="hover:text-purple-400 transition-all">Gallery</HashLink>
+        <HashLink smooth to="/contact" className="hover:text-purple-400 transition-all">Contact</HashLink>
       </div>
 
       <div className="text-gray-600 text-[10px] font-bold tracking-[0.3em] uppercase border-l border-white/10 pl-6 hidden md:block">

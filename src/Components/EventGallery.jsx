@@ -137,7 +137,7 @@ export default function EventGallery() {
       whileInView={{ opacity: 1 }}
       className="inline-block px-5 py-2 text-[11px] font-bold tracking-[0.4em] text-purple-300 uppercase bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-400/20 rounded-full backdrop-blur-sm"
     >
-      A Look Back
+      Glimpses from the Past
     </motion.span>
 
     <motion.h2
@@ -192,7 +192,7 @@ export default function EventGallery() {
             exit={{ opacity: 0 }}
             className="py-10 overflow-hidden"
           >
-            <div className="flex gap-4 animate-scroll whitespace-nowrap">
+            <div className="flex gap-6 animate-scroll whitespace-nowrap will-change-transform">
               {[...galleryImages, ...galleryImages].map((src, i) => {
                 const originalIndex = i % galleryImages.length;
                 return (
@@ -203,6 +203,8 @@ export default function EventGallery() {
                   >
                     <img
                       src={src}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       alt="Gallery"
                     />
@@ -227,6 +229,8 @@ export default function EventGallery() {
               >
                 <img
                   src={src}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full object-cover hover:scale-105 transition-transform duration-700"
                   alt="Gallery"
                 />
@@ -238,17 +242,19 @@ export default function EventGallery() {
 
       {/* Scroll Animation */}
       <style>{`
-        @keyframes scroll { 
-          0% { transform: translateX(0); } 
-          100% { transform: translateX(-50%); } 
-        }
-        .animate-scroll { 
-          animation: scroll 100s linear infinite; 
-        }
-        .animate-scroll:hover { 
-          animation-play-state: paused; 
-        }
-      `}</style>
+  @keyframes scroll { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+  }
+
+  .animate-scroll { 
+    animation: scroll 60s linear infinite; 
+  }
+
+  .animate-scroll:hover { 
+    animation-play-state: paused; 
+  }
+`}</style>
     </section>
   );
 }
