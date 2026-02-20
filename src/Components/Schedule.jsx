@@ -10,13 +10,9 @@ export default function Schedule() {
       <div className="max-w-4xl mx-auto relative">
         {/* Header */}
         <div className="text-center mb-24">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] font-black tracking-[0.5em] text-purple-400 uppercase"
-          >
+          <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.5em] text-purple-400 uppercase bg-purple-500/10 border border-purple-500/20 rounded-full">
             Roadmap
-          </motion.span>
+          </span>
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

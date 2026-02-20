@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const highlights = [
-    { title: "2 Days", desc: "Learning & Innovation" },
+    { title: "February 25 - March 17", desc: "Learning & Innovation" },
     { title: "Women Only", desc: "Inclusive Platform" },
     { title: "Industry Led", desc: "Hands-on Training" },
   ];
@@ -29,7 +29,6 @@ export default function About() {
             The Initiative
           </span>
           
-          {/* Headline - Standardized to Hero/Timeline Size */}
           <h2 className="text-4xl md:text-7xl font-black mb-10 tracking-tighter leading-[1.1]">
             About <br />
             <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
@@ -37,16 +36,18 @@ export default function About() {
             </span>
           </h2>
 
-          <div className="space-y-8 max-w-xl">
+          <div className="space-y-6 max-w-xl">
             <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light tracking-wide">
-              <strong className="text-white font-bold">SheInspires Hackathon 2.0</strong> is an all‑women innovation challenge by Zensar & RPG Foundation that empowers women in tech to build creative, impactful solutions using emerging technologies.
+              The countdown to <strong className="text-white font-semibold">SheInspires 2.0</strong> has begun—and we couldn’t be more excited to invite you to one of the most inspiring, high-energy, all-women tech events of the year! In partnership with <strong className="text-white font-semibold">Zensar</strong>, the <strong className="text-white font-semibold">RPG Foundation</strong>, and <strong className="text-white font-semibold">MIT Art, Design & Technology University</strong>, we proudly bring you a two-day, all-women hackathon designed to ignite creativity, spark innovation, and empower the next generation of women technologists.
+            </p>
 
-           
+            <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light tracking-wide">
+              This platform brings together passionate women coders, designers, innovators, and problem-solvers to build breakthrough solutions in Artificial Intelligence and Cloud Computing.
             </p>
           </div>
         </motion.div>
 
-        {/* Right Highlights - Switched to Column Format */}
+        {/* Right Highlights */}
         <div className="flex flex-col gap-5">
           {highlights.map((item, index) => (
             <motion.div
@@ -66,9 +67,6 @@ export default function About() {
                   <p className="text-gray-400 text-sm font-medium tracking-wide leading-snug">
                     {item.desc}
                   </p>
-                </div>
-                <div className="hidden md:block">
-                   
                 </div>
               </div>
             </motion.div>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import About from "./Components/About";
+import WhyParticipate from "./Components/WhyParticipate";
 import Schedule from "./Components/Schedule";
 import SponsorsSection from "./Components/SponsorSection";
 import Gallery from "./Components/Gallery";
@@ -23,6 +24,7 @@ function App() {
               <main>
                 <Hero />
                 <About />
+                <WhyParticipate />
                 <SponsorsSection />
                 <Schedule />
               </main>
