@@ -66,14 +66,13 @@ import pic61 from "../assets/pic61.JPG";
 import pic62 from "../assets/pic62.JPG";
 import pic63 from "../assets/pic63.JPG";
 
-
 const galleryImages = [
-pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12 ,pic23, pic14, pic15, pic16, pic17, pic18, pic19, pic20,
-pic21, pic22, pic13, pic24, pic25, pic26, pic27, pic28, pic29, pic30,
-pic31, pic32, pic33, pic34, pic35, pic36, pic37, pic38, pic39, pic40,
-pic41, pic42, pic43, pic44, pic45, pic46, pic47, pic48, pic49, pic50,
-pic51, pic52, pic53, pic54, pic55, pic56, pic57, pic58, pic59, pic60,
-pic61, pic62, pic63,
+  pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic10, pic11, pic12, pic13, pic14, pic15, pic16, pic17, pic18, pic19, pic20,
+  pic21, pic22, pic23, pic24, pic25, pic26, pic27, pic28, pic29, pic30,
+  pic31, pic32, pic33, pic34, pic35, pic36, pic37, pic38, pic39, pic40,
+  pic41, pic42, pic43, pic44, pic45, pic46, pic47, pic48, pic49, pic50,
+  pic51, pic52, pic53, pic54, pic55, pic56, pic57, pic58, pic59, pic60,
+  pic61, pic62, pic63,
 ];
 
 export default function EventGallery() {
@@ -126,61 +125,56 @@ export default function EventGallery() {
       </AnimatePresence>
 
       {/* Header */}
-     {/* Header */}
-<div className="px-6 max-w-7xl mx-auto flex flex-col items-center mb-20">
+      <div className="px-6 max-w-7xl mx-auto flex flex-col items-center mb-20">
+        {/* Heading Block */}
+        <div className="text-center flex flex-col items-center">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="inline-block px-5 py-2 text-[11px] font-bold tracking-[0.4em] text-purple-300 uppercase bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-400/20 rounded-full backdrop-blur-sm"
+          >
+            Glimpses from the Past
+          </motion.span>
 
-  {/* Heading Block */}
-  <div className="text-center flex flex-col items-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mt-8 text-4xl md:text-7xl font-black tracking-tight leading-none flex items-baseline justify-center gap-4"
+          >
+            <span>2025</span>
+            <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+              Gallery
+            </span>
+          </motion.h2>
+        </div>
 
-    <motion.span
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      className="inline-block px-5 py-2 text-[11px] font-bold tracking-[0.4em] text-purple-300 uppercase bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-400/20 rounded-full backdrop-blur-sm"
-    >
-      Glimpses from the Past
-    </motion.span>
+        {/* Toggle Buttons */}
+        <div className="mt-12 flex bg-white/5 p-1 rounded-2xl border border-white/10 backdrop-blur-sm">
+          <button
+            onClick={() => setViewMode("carousel")}
+            className={`px-6 py-2 rounded-xl text-[11px] font-bold transition-all ${
+              viewMode === "carousel"
+                ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
+                : "text-white/60 hover:text-white"
+            }`}
+          >
+            CINEMATIC
+          </button>
 
-    <motion.h2
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  className="mt-8 text-4xl md:text-7xl font-black tracking-tight leading-none flex items-baseline justify-center gap-4"
->
-  <span>2025</span>
-  <span className="pinyon-script-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-    Gallery
-  </span>
-</motion.h2>
-
-  </div>
-
-  {/* Toggle Buttons */}
-  <div className="mt-12 flex bg-white/5 p-1 rounded-2xl border border-white/10 backdrop-blur-sm">
-    <button
-      onClick={() => setViewMode("carousel")}
-      className={`px-6 py-2 rounded-xl text-[11px] font-bold transition-all ${
-        viewMode === "carousel"
-          ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
-          : "text-white/60 hover:text-white"
-      }`}
-    >
-      CINEMATIC
-    </button>
-
-    <button
-      onClick={() => setViewMode("grid")}
-      className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[11px] font-bold transition-all ${
-        viewMode === "grid"
-          ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
-          : "text-white/60 hover:text-white"
-      }`}
-    >
-      <FiGrid size={14} />
-      GRID
-    </button>
-  </div>
-
-</div>
+          <button
+            onClick={() => setViewMode("grid")}
+            className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[11px] font-bold transition-all ${
+              viewMode === "grid"
+                ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
+                : "text-white/60 hover:text-white"
+            }`}
+          >
+            <FiGrid size={14} />
+            GRID
+          </button>
+        </div>
+      </div>
 
       {/* Views */}
       <AnimatePresence mode="wait">
@@ -192,7 +186,7 @@ export default function EventGallery() {
             exit={{ opacity: 0 }}
             className="py-10 overflow-hidden"
           >
-            <div className="flex gap-6 animate-scroll whitespace-nowrap will-change-transform">
+            <div className="flex gap-6 animate-scroll will-change-transform">
               {[...galleryImages, ...galleryImages].map((src, i) => {
                 const originalIndex = i % galleryImages.length;
                 return (
@@ -242,19 +236,22 @@ export default function EventGallery() {
 
       {/* Scroll Animation */}
       <style>{`
-  @keyframes scroll { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
-  }
+        @keyframes scroll { 
+          0% { transform: translateX(0); } 
+          100% { transform: translateX(calc(-50% - 12px)); }
+        }
 
-  .animate-scroll { 
-    animation: scroll 60s linear infinite; 
-  }
+        .animate-scroll { 
+          animation: scroll 90s linear infinite;
+          width: fit-content;
+          display: flex;
+          flex-wrap: nowrap;
+        }
 
-  .animate-scroll:hover { 
-    animation-play-state: paused; 
-  }
-`}</style>
+        .animate-scroll:hover { 
+          animation-play-state: paused; 
+        }
+      `}</style>
     </section>
   );
 }
