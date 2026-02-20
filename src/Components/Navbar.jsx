@@ -23,6 +23,7 @@ export default function Navbar() {
     { name: "Schedule", href: "/#schedule" },
     { name: "Gallery", href: "/gallery#stats" },
     { name: "Sponsors", href: "/#sponsors" },
+    { name: "Contact us", href: "/contact" },
   ];
 
   return (

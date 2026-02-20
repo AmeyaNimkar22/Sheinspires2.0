@@ -7,8 +7,10 @@ import About from "./Components/About";
 import WhyParticipate from "./Components/WhyParticipate";
 import Schedule from "./Components/Schedule";
 import SponsorsSection from "./Components/SponsorSection";
+import EventGallery from "./Components/EventGallery";
 import Gallery from "./Components/Gallery";
 import Footer from "./Components/Footer";
+import ContactUs from "./Components/ContactUs";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
                 <About />
                 <WhyParticipate />
                 <SponsorsSection />
+                <EventGallery />
                 <Schedule />
               </main>
             }
@@ -33,6 +36,8 @@ function App() {
 
           {/* Gallery Page */}
           <Route path="/gallery" element={<Gallery />} />
+          {/* Contact Page */}
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
 
         <Footer /> 
