@@ -26,9 +26,9 @@ function App() {
               <main>
                 <Hero />
                 <About />
-                <WhyParticipate />
-                <SponsorsSection />
                 <EventGallery />
+                <WhyParticipate />
+                <SponsorsSection />                
                 <Schedule />
               </main>
             }
