@@ -6,9 +6,9 @@ import { useInView } from "react-intersection-observer";
 
 
 
-import w1 from "../assets/w1.JPG";
-import w2 from "../assets/w2.JPG";
-import w3 from "../assets/w3.JPG";
+import w1 from "../assets/w1.webp";
+import w2 from "../assets/w2.webp";
+import w3 from "../assets/w3.webp";
 
 const stats = [
   { label: "Student Participants", value: "700+" },

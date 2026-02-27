@@ -1,8 +1,9 @@
-// First, import the images (adjust paths based on your folder structure)
-import rpglogo from "../assets/rpglogo.png";
-import zensarlogo from "../assets/zensarlogo.png";
 
-import mitadtlogo from "../assets/mitadtlogo.png";
+import rpglogo from "../assets/rpglogo.webp";
+import zensarlogo from "../assets/zensarlogo.webp";
+import cloudthatlogo from "../assets/cloudthatlogo.webp";
+import mitadtlogo from "../assets/mitadtlogo.webp";
+import UNextlogo from "../assets/UNextlogo.webp";
 
 export const sponsors = [
   { 
@@ -14,6 +15,16 @@ export const sponsors = [
     src: zensarlogo, 
     alt: "Zensar Technologies",
     name: "Zensar Technologies"
+  },
+    { 
+    src: cloudthatlogo, 
+    alt: "CloudThat Technologies",
+    name: "CloudThat Technologies"
+  },
+  { 
+    src: UNextlogo, 
+    alt: "UNext Technologies",
+    name: "UNext Technologies"
   },
   { 
     src: mitadtlogo, 

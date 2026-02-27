@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import logo from "../assets/navlogo.png"; // Adjust the path as necessary
+import logo from "../assets/navlogo.webp"; // Adjust the path as necessary
 
 
 export default function Navbar() {
