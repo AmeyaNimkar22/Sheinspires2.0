@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const scheduleData = [
   {
@@ -40,6 +40,10 @@ const scheduleData = [
       expertise: "Azure Cloud • IoT • AI/ML • Big Data • DevOps",
       experience: "10+ years IT experience",
       clients: ["VMware", "Accenture", "TCS", "Infosys", "L&T", "HCL", "Intuit", "Mindtree"]
+    },
+    recording: {
+      url: "https://youtu.be/MHgou-zwx_A",
+      embedUrl: "https://www.youtube.com/embed/MHgou-zwx_A"
     }
   },
   {
@@ -106,6 +110,19 @@ const scheduleData = [
 ];
 
 export default function Schedule() {
+  const [selectedRecording, setSelectedRecording] = useState(null);
+
+  const openRecording = (recording) => {
+    setSelectedRecording(recording);
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeRecording = () => {
+    setSelectedRecording(null);
+    document.body.style.overflow = 'unset';
+  };
+
   return (
     <section id="schedule" className="relative bg-[#050505] text-white py-32 px-6 overflow-hidden font-sans">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
@@ -196,6 +213,19 @@ export default function Schedule() {
                       <p className="text-gray-400 mb-1">{item.speaker.title}</p>
                       <p className="text-gray-400 mb-1">{item.speaker.expertise}</p>
                       <p className="text-gray-500 text-[8px] mt-2">Fortune 500 clients: {item.speaker.clients.join(" • ")}</p>
+                      
+                      {/* View Recording Button */}
+                      {item.recording && (
+                        <button
+                          onClick={() => openRecording(item.recording)}
+                          className="mt-3 w-full flex items-center justify-center gap-2 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 text-[10px] font-bold py-2 px-3 rounded-lg border border-yellow-500/30 transition-all duration-300"
+                        >
+                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                          View Recording
+                        </button>
+                      )}
                     </div>
                   )}
 
@@ -213,7 +243,7 @@ export default function Schedule() {
 
                 <footer className="mt-10">
                   <span className={`inline-flex items-center text-[8px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-lg bg-white/5 border ${item.isHighlight ? 'border-green-500/30' : 'border-white/10'} group-hover:border-purple-500/40 transition-colors`}>
-                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.status === 'Compulsory Attendance' ? 'bg-red-400 animate-ping' : item.isHighlight ? 'bg-green-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
+                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.status === 'Completed' ? 'bg-blue-400' : item.isHighlight ? 'bg-green-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
                     {item.status}
                   </span>
                 </footer>
@@ -239,6 +269,66 @@ export default function Schedule() {
           </p>
         </motion.footer>
       </div>
+
+      {/* Video Recording Modal */}
+      <AnimatePresence>
+        {selectedRecording && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeRecording}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            />
+            
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-4xl z-50"
+            >
+              <div className="relative bg-[#0a0a0a] border border-purple-500/30 rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/20">
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-white/10">
+                  <h3 className="text-sm font-bold text-purple-400 uppercase tracking-wider">
+                    Session Recording
+                  </h3>
+                  <button
+                    onClick={closeRecording}
+                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                  >
+                    <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                {/* Video Container */}
+                <div className="relative pt-[56.25%] bg-black">
+                  <iframe
+                    src={selectedRecording.embedUrl}
+                    title="Session Recording"
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                
+                {/* Footer */}
+                <div className="p-4 text-center">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wider">
+                    Expert Session • Cloud & Emerging Tech with Sharat Kanthi
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
