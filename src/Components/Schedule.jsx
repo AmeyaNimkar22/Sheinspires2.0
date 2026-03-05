@@ -8,7 +8,7 @@ const scheduleData = [
     time: "7:00 PM - 8:00 PM",
     title: "SheInspires Kick-off Online Session",
     location: "Virtual Event",
-    status: "Confirmed",
+    status: "Completed",
     isHighlight: false,
     color: "from-blue-500 to-cyan-400",
     icon: (
@@ -23,10 +23,10 @@ const scheduleData = [
     type: "EXPERT SESSION",
     date: "MAR 02, 2026",
     time: "7:00 PM - 8:00 PM",
-    title: "Masterclass: Industry Insights",
-    location: "Online / Microsoft Teams",
-    status: "Upcoming",
-    isHighlight: true,
+    title: "Cloud & Emerging Tech: Industry Insights with Sharat Kanthi",
+    location: "Microsoft Teams",
+    status: "Completed",
+    isHighlight: false,
     color: "from-yellow-400 to-orange-500",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -34,6 +34,40 @@ const scheduleData = [
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
     ),
+    speaker: {
+      name: "Sharat Kanthi",
+      title: "Cloud Solution Architect & Business Unit Head – Azure, CloudThat",
+      expertise: "Azure Cloud • IoT • AI/ML • Big Data • DevOps",
+      experience: "10+ years IT experience",
+      clients: ["VMware", "Accenture", "TCS", "Infosys", "L&T", "HCL", "Intuit", "Mindtree"]
+    }
+  },
+  {
+    type: "EXPERT SESSION",
+    date: "MAR 06, 2026",
+    time: "7:00 PM - 8:00 PM",
+    title: "Vibe Coding: AI-Assisted Development with Sharad Rajore",
+    location: "Microsoft Teams",
+    status: "Upcoming",
+    isHighlight: true,
+    color: "from-green-500 to-emerald-400",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+        <path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10.5" />
+        <polyline points="16 2 22 8 16 8" />
+        <line x1="10" y1="14" x2="21" y2="14" />
+        <line x1="10" y1="18" x2="18" y2="18" />
+        <line x1="3" y1="10" x2="8" y2="10" />
+      </svg>
+    ),
+    speaker: {
+      name: "Sharad Rajore",
+      title: "Generative AI Specialist",
+      expertise: "LLM-based solutions • AI Agents • Rapid Prototyping",
+      tools: ["GitHub Copilot", "Claude", "Google Antigravity"],
+      session: "Vibe coding • AI-assisted development • End-to-end prototyping"
+    }
   },
   {
     type: "DAY 1",
@@ -98,7 +132,7 @@ export default function Schedule() {
           </motion.h2>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 relative">
           {scheduleData.map((item, index) => (
             <motion.article
               key={index}
@@ -109,11 +143,11 @@ export default function Schedule() {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className={`relative p-8 h-full bg-white/[0.02] border ${item.isHighlight ? 'border-purple-500/40 ring-1 ring-purple-500/20' : 'border-white/10'} rounded-[2.5rem] backdrop-blur-xl hover:border-purple-500/60 hover:bg-white/[0.04] transition-all duration-500 flex flex-col shadow-2xl overflow-hidden`}>
+              <div className={`relative p-8 h-full bg-white/[0.02] border ${item.isHighlight ? 'border-green-500/40 ring-1 ring-green-500/20' : 'border-white/10'} rounded-[2.5rem] backdrop-blur-xl hover:border-purple-500/60 hover:bg-white/[0.04] transition-all duration-500 flex flex-col shadow-2xl overflow-hidden`}>
                 
                 {item.isHighlight && (
                   <div className="absolute top-0 right-0">
-                    <div className="bg-purple-600 text-[8px] font-bold px-4 py-1 rounded-bl-xl uppercase tracking-tighter">
+                    <div className="bg-green-600 text-[8px] font-bold px-4 py-1 rounded-bl-xl uppercase tracking-tighter">
                       Next Event
                     </div>
                   </div>
@@ -123,14 +157,14 @@ export default function Schedule() {
                 
                 <div className="flex justify-between items-start mb-8">
                   <div className="flex flex-col">
-                    <span className={`text-[9px] font-black tracking-widest uppercase mb-2 ${item.isHighlight ? 'text-purple-400' : 'text-gray-500'}`}>
+                    <span className={`text-[9px] font-black tracking-widest uppercase mb-2 ${item.isHighlight ? 'text-green-400' : item.type === 'EXPERT SESSION' ? 'text-yellow-400' : 'text-gray-500'}`}>
                       {item.type}
                     </span>
                     <span className="text-2xl font-black tracking-tighter text-white group-hover:text-purple-300 transition-colors">
                       {item.date}
                     </span>
                   </div>
-                  <div className={`p-3 bg-white/5 rounded-2xl border border-white/10 text-purple-400 group-hover:scale-110 group-hover:bg-purple-500/20 transition-all duration-500 w-11 h-11 flex items-center justify-center shrink-0`}>
+                  <div className={`p-3 bg-white/5 rounded-2xl border border-white/10 ${item.isHighlight ? 'text-green-400 group-hover:bg-green-500/20' : 'text-purple-400 group-hover:bg-purple-500/20'} group-hover:scale-110 transition-all duration-500 w-11 h-11 flex items-center justify-center shrink-0`}>
                     <div className="w-6 h-6">{item.icon}</div>
                   </div>
                 </div>
@@ -154,11 +188,32 @@ export default function Schedule() {
                       <span className="line-clamp-2">{item.location}</span>
                     </div>
                   </div>
+
+                  {/* Speaker Details - March 2nd Session */}
+                  {item.type === "EXPERT SESSION" && item.date === "MAR 02, 2026" && item.speaker && (
+                    <div className="mt-3 text-[10px] bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20">
+                      <p className="font-bold text-yellow-400 mb-1">{item.speaker.name}</p>
+                      <p className="text-gray-400 mb-1">{item.speaker.title}</p>
+                      <p className="text-gray-400 mb-1">{item.speaker.expertise}</p>
+                      <p className="text-gray-500 text-[8px] mt-2">Fortune 500 clients: {item.speaker.clients.join(" • ")}</p>
+                    </div>
+                  )}
+
+                  {/* Speaker Details - March 6th Session */}
+                  {item.type === "EXPERT SESSION" && item.date === "MAR 06, 2026" && item.speaker && (
+                    <div className="mt-3 text-[10px] bg-green-500/10 p-3 rounded-xl border border-green-500/20">
+                      <p className="font-bold text-green-400 mb-1">{item.speaker.name}</p>
+                      <p className="text-gray-400 mb-1">{item.speaker.title}</p>
+                      <p className="text-gray-400 mb-1">{item.speaker.expertise}</p>
+                      <p className="text-gray-400 text-[8px] mt-2">Tools: {item.speaker.tools.join(" • ")}</p>
+                      <p className="text-gray-500 text-[8px]">{item.speaker.session}</p>
+                    </div>
+                  )}
                 </div>
 
                 <footer className="mt-10">
-                  <span className={`inline-flex items-center text-[8px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-lg bg-white/5 border ${item.isHighlight ? 'border-purple-500/30' : 'border-white/10'} group-hover:border-purple-500/40 transition-colors`}>
-                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.isHighlight ? 'bg-green-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
+                  <span className={`inline-flex items-center text-[8px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-lg bg-white/5 border ${item.isHighlight ? 'border-green-500/30' : 'border-white/10'} group-hover:border-purple-500/40 transition-colors`}>
+                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.status === 'Compulsory Attendance' ? 'bg-red-400 animate-ping' : item.isHighlight ? 'bg-green-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
                     {item.status}
                   </span>
                 </footer>

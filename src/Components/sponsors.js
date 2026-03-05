@@ -3,7 +3,7 @@ import rpglogo from "../assets/rpglogo.webp";
 import zensarlogo from "../assets/zensarlogo.webp";
 import cloudthatlogo from "../assets/cloudthatlogo.webp";
 import mitadtlogo from "../assets/mitadtlogo.webp";
-import UNextlogo from "../assets/UNextlogo.webp";
+import UNextlogo from "../assets/UNextlogo.jpg";
 
 export const sponsors = [
   { 
