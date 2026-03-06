@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const highlights = [
-    { title: "February 25 - March 17", desc: "Learning & Innovation" },
+    { title: "February 25 - March 16", desc: "Learning & Innovation" },
     { title: "Women Only", desc: "Inclusive Platform" },
     { title: "Industry Led", desc: "Hands-on Training" },
   ];
