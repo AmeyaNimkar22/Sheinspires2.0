@@ -77,7 +77,7 @@ const scheduleData = [
     type: "EXPERT SESSION",
     date: "MAR 11, 2026",
     time: "7:00 PM - 8:00 PM",
-    title: "Online Expert Session",
+    title: "How to build and present prototype",
     location: "Microsoft Teams",
     status: "Schedule TBA",
     isHighlight: false,
