@@ -73,8 +73,8 @@ const scheduleData = [
       session: "Vibe coding • AI-assisted development • End-to-end prototyping"
     },
     recording: {
-      url: "https://youtu.be/MHgou-zwx_A",
-      embedUrl: "https://www.youtube.com/embed/MHgou-zwx_A"
+      url: "https://youtu.be/VPX0kLVaAmg",
+      embedUrl: "https://www.youtube.com/embed/VPX0kLVaAmg"
     }
   },
   {
