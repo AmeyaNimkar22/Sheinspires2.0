@@ -52,8 +52,8 @@ const scheduleData = [
     time: "7:00 PM - 8:00 PM",
     title: "Vibe Coding: AI-Assisted Development with Sharad Rajore",
     location: "Microsoft Teams",
-    status: "Upcoming",
-    isHighlight: true,
+    status: "Completed",
+    isHighlight: false,
     color: "from-green-500 to-emerald-400",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -71,16 +71,20 @@ const scheduleData = [
       expertise: "LLM-based solutions • AI Agents • Rapid Prototyping",
       tools: ["GitHub Copilot", "Claude", "Google Antigravity"],
       session: "Vibe coding • AI-assisted development • End-to-end prototyping"
+    },
+    recording: {
+      url: "https://youtu.be/MHgou-zwx_A",
+      embedUrl: "https://www.youtube.com/embed/MHgou-zwx_A"
     }
   },
   {
     type: "EXPERT SESSION",
     date: "MAR 11, 2026",
-    time: "7:00 PM - 8:00 PM",
-    title: "How to build and present prototype",
+    time: "7:00 PM - 8:30 PM",
+    title: "How to Build an Effective Prototype & Deliver High-Impact Presentations",
     location: "Microsoft Teams",
-    status: "Schedule TBA",
-    isHighlight: false,
+    status: "Upcoming",
+    isHighlight: true,
     color: "from-purple-600 to-pink-500",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -88,8 +92,17 @@ const scheduleData = [
         <line x1="16" y1="2" x2="16" y2="6" />
         <line x1="8" y1="2" x2="8" y2="6" />
         <line x1="3" y1="10" x2="21" y2="10" />
+        <path d="M8 14h.01M16 14h.01M8 18h.01M16 18h.01" />
       </svg>
     ),
+    speaker: {
+      name: "Jyotika Dawar",
+      title: "Program Management & Product Strategy Leader",
+      expertise: "Program Management • Product Strategy • Agile Delivery • Transformation Leadership",
+      experience: "20+ years experience",
+      companies: ["EY", "Oracle", "Genpact", "Publicis Sapient", "RBS", "Fidelity"],
+      tools: ["Figma", "MURAL", "Lucidchart"]
+    }
   },
   {
     type: "DAY 1",
@@ -114,7 +127,6 @@ export default function Schedule() {
 
   const openRecording = (recording) => {
     setSelectedRecording(recording);
-    // Prevent body scrolling when modal is open
     document.body.style.overflow = 'hidden';
   };
 
@@ -160,11 +172,11 @@ export default function Schedule() {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className={`relative p-8 h-full bg-white/[0.02] border ${item.isHighlight ? 'border-green-500/40 ring-1 ring-green-500/20' : 'border-white/10'} rounded-[2.5rem] backdrop-blur-xl hover:border-purple-500/60 hover:bg-white/[0.04] transition-all duration-500 flex flex-col shadow-2xl overflow-hidden`}>
+              <div className={`relative p-8 h-full bg-white/[0.02] border ${item.isHighlight ? 'border-purple-500/40 ring-1 ring-purple-500/20' : 'border-white/10'} rounded-[2.5rem] backdrop-blur-xl hover:border-purple-500/60 hover:bg-white/[0.04] transition-all duration-500 flex flex-col shadow-2xl overflow-hidden`}>
                 
                 {item.isHighlight && (
                   <div className="absolute top-0 right-0">
-                    <div className="bg-green-600 text-[8px] font-bold px-4 py-1 rounded-bl-xl uppercase tracking-tighter">
+                    <div className="bg-purple-600 text-[8px] font-bold px-4 py-1 rounded-bl-xl uppercase tracking-tighter">
                       Next Event
                     </div>
                   </div>
@@ -174,14 +186,14 @@ export default function Schedule() {
                 
                 <div className="flex justify-between items-start mb-8">
                   <div className="flex flex-col">
-                    <span className={`text-[9px] font-black tracking-widest uppercase mb-2 ${item.isHighlight ? 'text-green-400' : item.type === 'EXPERT SESSION' ? 'text-yellow-400' : 'text-gray-500'}`}>
+                    <span className={`text-[9px] font-black tracking-widest uppercase mb-2 ${item.isHighlight ? 'text-purple-400' : 'text-purple-400'}`}>
                       {item.type}
                     </span>
                     <span className="text-2xl font-black tracking-tighter text-white group-hover:text-purple-300 transition-colors">
                       {item.date}
                     </span>
                   </div>
-                  <div className={`p-3 bg-white/5 rounded-2xl border border-white/10 ${item.isHighlight ? 'text-green-400 group-hover:bg-green-500/20' : 'text-purple-400 group-hover:bg-purple-500/20'} group-hover:scale-110 transition-all duration-500 w-11 h-11 flex items-center justify-center shrink-0`}>
+                  <div className={`p-3 bg-white/5 rounded-2xl border border-white/10 text-purple-400 group-hover:bg-purple-500/20 group-hover:scale-110 transition-all duration-500 w-11 h-11 flex items-center justify-center shrink-0`}>
                     <div className="w-6 h-6">{item.icon}</div>
                   </div>
                 </div>
@@ -206,44 +218,84 @@ export default function Schedule() {
                     </div>
                   </div>
 
-                  {/* Speaker Details - March 2nd Session */}
-                  {item.type === "EXPERT SESSION" && item.date === "MAR 02, 2026" && item.speaker && (
-                    <div className="mt-3 text-[10px] bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20">
-                      <p className="font-bold text-yellow-400 mb-1">{item.speaker.name}</p>
-                      <p className="text-gray-400 mb-1">{item.speaker.title}</p>
-                      <p className="text-gray-400 mb-1">{item.speaker.expertise}</p>
-                      <p className="text-gray-500 text-[8px] mt-2">Fortune 500 clients: {item.speaker.clients.join(" • ")}</p>
-                      
-                      {/* View Recording Button */}
-                      {item.recording && (
-                        <button
-                          onClick={() => openRecording(item.recording)}
-                          className="mt-3 w-full flex items-center justify-center gap-2 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 text-[10px] font-bold py-2 px-3 rounded-lg border border-yellow-500/30 transition-all duration-300"
-                        >
-                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                          </svg>
-                          View Recording
-                        </button>
-                      )}
-                    </div>
-                  )}
+                  {/* Speaker Details Container - Fixed height for all speaker boxes */}
+                  <div className="mt-3 min-h-[280px] flex flex-col">
+                    {/* March 2nd Session */}
+                    {item.type === "EXPERT SESSION" && item.date === "MAR 02, 2026" && item.speaker && (
+                      <div className="flex-1 flex flex-col bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20">
+                        <div className="space-y-1">
+                          <p className="font-bold text-yellow-400 text-[10px] leading-tight">{item.speaker.name}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight line-clamp-2">{item.speaker.title}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight mt-1">{item.speaker.expertise}</p>
+                          <p className="text-gray-500 text-[8px] mt-2">Fortune 500 clients:</p>
+                          <p className="text-gray-500 text-[8px] leading-tight">{item.speaker.clients.join(" • ")}</p>
+                        </div>
+                        
+                        {/* View Recording Button - pushed to bottom */}
+                        {item.recording && (
+                          <div className="mt-auto pt-3">
+                            <button
+                              onClick={() => openRecording(item.recording)}
+                              className="w-full flex items-center justify-center gap-2 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 text-[10px] font-bold py-2 px-3 rounded-lg border border-yellow-500/30 transition-all duration-300"
+                            >
+                              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                              </svg>
+                              View Recording
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
 
-                  {/* Speaker Details - March 6th Session */}
-                  {item.type === "EXPERT SESSION" && item.date === "MAR 06, 2026" && item.speaker && (
-                    <div className="mt-3 text-[10px] bg-green-500/10 p-3 rounded-xl border border-green-500/20">
-                      <p className="font-bold text-green-400 mb-1">{item.speaker.name}</p>
-                      <p className="text-gray-400 mb-1">{item.speaker.title}</p>
-                      <p className="text-gray-400 mb-1">{item.speaker.expertise}</p>
-                      <p className="text-gray-400 text-[8px] mt-2">Tools: {item.speaker.tools.join(" • ")}</p>
-                      <p className="text-gray-500 text-[8px]">{item.speaker.session}</p>
-                    </div>
-                  )}
+                    {/* March 6th Session */}
+                    {item.type === "EXPERT SESSION" && item.date === "MAR 06, 2026" && item.speaker && (
+                      <div className="flex-1 flex flex-col bg-green-500/10 p-3 rounded-xl border border-green-500/20">
+                        <div className="space-y-1">
+                          <p className="font-bold text-green-400 text-[10px] leading-tight">{item.speaker.name}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight">{item.speaker.title}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight mt-1">{item.speaker.expertise}</p>
+                          <p className="text-gray-400 text-[8px] mt-2">Tools: {item.speaker.tools.join(" • ")}</p>
+                          <p className="text-gray-500 text-[8px] leading-tight">{item.speaker.session}</p>
+                        </div>
+                        
+                        {/* View Recording Button - pushed to bottom */}
+                        {item.recording && (
+                          <div className="mt-auto pt-3">
+                            <button
+                              onClick={() => openRecording(item.recording)}
+                              className="w-full flex items-center justify-center gap-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 text-[10px] font-bold py-2 px-3 rounded-lg border border-green-500/30 transition-all duration-300"
+                            >
+                              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                              </svg>
+                              View Recording
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* March 11th Session */}
+                    {item.type === "EXPERT SESSION" && item.date === "MAR 11, 2026" && item.speaker && (
+                      <div className="flex-1 flex flex-col bg-purple-500/10 p-3 rounded-xl border border-purple-500/20">
+                        <div className="space-y-1">
+                          <p className="font-bold text-purple-400 text-[10px] leading-tight">{item.speaker.name}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight line-clamp-2">{item.speaker.title}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight mt-1">{item.speaker.expertise}</p>
+                          <p className="text-gray-400 text-[9px] leading-tight">{item.speaker.experience}</p>
+                          <p className="text-gray-500 text-[8px] mt-2">Previous organizations:</p>
+                          <p className="text-gray-500 text-[8px] leading-tight">{item.speaker.companies.join(" • ")}</p>
+                          <p className="text-gray-400 text-[8px] mt-2">Tools: {item.speaker.tools.join(" • ")}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                <footer className="mt-10">
-                  <span className={`inline-flex items-center text-[8px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-lg bg-white/5 border ${item.isHighlight ? 'border-green-500/30' : 'border-white/10'} group-hover:border-purple-500/40 transition-colors`}>
-                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.status === 'Completed' ? 'bg-blue-400' : item.isHighlight ? 'bg-green-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
+                <footer className="mt-6">
+                  <span className={`inline-flex items-center text-[8px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-lg bg-white/5 border ${item.isHighlight ? 'border-purple-500/30' : 'border-white/10'} group-hover:border-purple-500/40 transition-colors`}>
+                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${item.status === 'Completed' ? 'bg-blue-400' : item.isHighlight ? 'bg-purple-400 animate-ping' : 'bg-purple-500 animate-pulse'}`} />
                     {item.status}
                   </span>
                 </footer>
@@ -274,7 +326,6 @@ export default function Schedule() {
       <AnimatePresence>
         {selectedRecording && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -283,7 +334,6 @@ export default function Schedule() {
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
             />
             
-            {/* Modal */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -292,7 +342,6 @@ export default function Schedule() {
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-4xl z-50"
             >
               <div className="relative bg-[#0a0a0a] border border-purple-500/30 rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/20">
-                {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
                   <h3 className="text-sm font-bold text-purple-400 uppercase tracking-wider">
                     Session Recording
@@ -307,7 +356,6 @@ export default function Schedule() {
                   </button>
                 </div>
                 
-                {/* Video Container */}
                 <div className="relative pt-[56.25%] bg-black">
                   <iframe
                     src={selectedRecording.embedUrl}
@@ -318,10 +366,9 @@ export default function Schedule() {
                   />
                 </div>
                 
-                {/* Footer */}
                 <div className="p-4 text-center">
                   <p className="text-[10px] text-gray-500 uppercase tracking-wider">
-                    Expert Session • Cloud & Emerging Tech with Sharat Kanthi
+                    Expert Session Recording
                   </p>
                 </div>
               </div>
